@@ -8,6 +8,7 @@ import { TokenModule } from './token/token.module';
 import { configModule } from './configure.root';
 import { RoleModule } from './role/role.module';
 import { RoleAccessModule } from './role-access/role-access.module';
+import { DocumentTypeModule } from './document-type/document-type.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { RoleAccessModule } from './role-access/role-access.module';
     TokenModule,
     RoleModule,
     RoleAccessModule,
+    DocumentTypeModule,
   ],
 })
 export class AppModule {}
