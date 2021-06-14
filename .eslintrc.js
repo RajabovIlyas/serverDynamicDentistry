@@ -22,5 +22,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-this-alias': 'off',
     '@typescript-eslint/ban-types': 'off',
+    'eslint(prettier/prettier)':'off',
   },
 };

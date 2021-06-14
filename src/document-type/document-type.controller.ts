@@ -8,6 +8,7 @@ import {
   Controller,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { constData } from './constData/typeData';
 import { DocumentTypeService } from './document-type.service';
 import { CreateDocumentTypeDto } from './dto/document-type.dto';
 
@@ -38,5 +39,11 @@ export class DocumentTypeController {
   @Get()
   async getAll() {
     return this.documentTypeService.getAll();
+  }
+
+
+  @Get('/type')
+  async getType(){
+    return constData;
   }
 }
