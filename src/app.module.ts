@@ -9,6 +9,7 @@ import { configModule } from './configure.root';
 import { RoleModule } from './role/role.module';
 import { RoleAccessModule } from './role-access/role-access.module';
 import { DocumentTypeModule } from './document-type/document-type.module';
+import { DirectoryModule } from './directory/directory.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { DocumentTypeModule } from './document-type/document-type.module';
     RoleModule,
     RoleAccessModule,
     DocumentTypeModule,
+    DirectoryModule,
   ],
 })
 export class AppModule {}

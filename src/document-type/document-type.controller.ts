@@ -32,7 +32,6 @@ export class DocumentTypeController {
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
-    console.log('ilyas', id);
     return this.documentTypeService.delete(id);
   }
 
@@ -41,9 +40,8 @@ export class DocumentTypeController {
     return this.documentTypeService.getAll();
   }
 
-
   @Get('/type')
-  async getType(){
+  async getType() {
     return constData;
   }
 }
