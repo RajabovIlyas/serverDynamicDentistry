@@ -1,5 +1,7 @@
+import { IField, ILegacy } from '../interfaces/document-type.interface';
+
 export class CreateDocumentTypeDto {
   readonly name: string;
-  readonly keyName: string;
-  readonly fields: [string];
+  readonly fields: IField[];
+  readonly legacy: ILegacy[];
 }

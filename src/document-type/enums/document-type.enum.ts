@@ -1,5 +1,5 @@
 export enum documentTypeEnum {
-    STRING = 'STRING',
-    NUMBER = 'NUMBER',
-    DATE = 'DATE',
+  STRING = 'STRING',
+  NUMBER = 'NUMBER',
+  DATE = 'DATE',
 }

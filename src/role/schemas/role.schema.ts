@@ -3,23 +3,16 @@ import { Schema } from 'mongoose';
 
 export const RoleSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  roleComposition: {
+  roleaccess: {
     type: [
       {
-        name: { type: String, required: true },
-        roleaccess: {
-          type: [
-            {
-              type: Schema.Types.ObjectId,
-              ref: 'RoleAccess',
-              min: 1,
-              required: true,
-            },
-          ],
-          required: true,
-        },
+        type: Schema.Types.ObjectId,
+        ref: 'RoleAccess',
+        min: 1,
+        required: true,
       },
     ],
+    required: true,
   },
 });
 

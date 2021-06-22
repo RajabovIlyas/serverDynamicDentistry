@@ -21,9 +21,6 @@ export class RoleService {
   }
 
   async getAll(): Promise<IRole | {}> {
-    return this.roleModel
-      .find()
-      .populate({ path: 'roleComposition.roleaccess' })
-      .exec();
+    return this.roleModel.find().populate({ path: 'roleaccess' }).exec();
   }
 }
