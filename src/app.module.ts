@@ -10,6 +10,7 @@ import { RoleModule } from './role/role.module';
 import { RoleAccessModule } from './role-access/role-access.module';
 import { DocumentTypeModule } from './document-type/document-type.module';
 import { DirectoryModule } from './directory/directory.module';
+import { DocumentDataModule } from './document-data/document-data.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { DirectoryModule } from './directory/directory.module';
     RoleAccessModule,
     DocumentTypeModule,
     DirectoryModule,
+    DocumentDataModule,
   ],
 })
 export class AppModule {}

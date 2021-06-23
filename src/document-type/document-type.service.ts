@@ -29,6 +29,9 @@ export class DocumentTypeService {
   }
 
   async getAll(): Promise<IDocumentType | {}> {
-    return this.documentTypeModel.find().exec();
+    return this.documentTypeModel
+      .find()
+      .populate({ path: 'legacy.directory' })
+      .exec();
   }
 }
