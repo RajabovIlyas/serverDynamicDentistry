@@ -12,7 +12,7 @@ export interface IData {
 }
 
 export interface IDocumentData extends Document {
-  readonly name: string;
+  readonly documentType: string;
   readonly user: string;
   readonly data: IData[];
   readonly dataDirectory: IDataDirectory[];

@@ -14,7 +14,23 @@ export class DocumentDataService {
   async create(
     createDocumentDataDto: CreateDocumentDataDto,
   ): Promise<IDocumentData> {
-    return this.documentDataModel.create(createDocumentDataDto);
+    const cutDate = (value) => {
+      if (!Number.isNaN(Date.parse(value.value))) {
+        return { ...value, value: value.value.substr(0, 10) };
+      } else {
+        return value;
+      }
+    };
+    const data = await createDocumentDataDto.data.map(cutDate);
+    const dataDirectory = createDocumentDataDto.dataDirectory.map((value) => {
+      return { ...value, data: value.data.map(cutDate) };
+    });
+
+    return this.documentDataModel.create({
+      ...createDocumentDataDto,
+      data,
+      dataDirectory,
+    });
   }
 
   async change(
@@ -29,6 +45,6 @@ export class DocumentDataService {
   }
 
   async getAll(): Promise<IDocumentData | {}> {
-    return this.documentDataModel.find().exec();
+    return this.documentDataModel.find().populate({ path: 'user' }).exec();
   }
 }
