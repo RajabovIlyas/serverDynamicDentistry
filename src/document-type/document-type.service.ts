@@ -28,6 +28,13 @@ export class DocumentTypeService {
     return this.documentTypeModel.findByIdAndDelete(id);
   }
 
+  async getOne(id: string): Promise<IDocumentType> {
+    return this.documentTypeModel
+      .findById(id)
+      .populate({ path: 'legacy.directory' })
+      .exec();
+  }
+
   async getAll(): Promise<IDocumentType | {}> {
     return this.documentTypeModel
       .find()

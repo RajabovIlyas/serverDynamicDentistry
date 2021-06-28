@@ -7,6 +7,11 @@ export const DocumentDataSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  documentType: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'DocumentType',
+    required: true,
+  },
   data: {
     type: [
       {
@@ -24,7 +29,7 @@ export const DocumentDataSchema = new mongoose.Schema({
       {
         directory: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'User',
+          ref: 'Directory',
           required: true,
         },
         nameDirectory: { type: String, required: true },

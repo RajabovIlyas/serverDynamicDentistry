@@ -25,7 +25,7 @@ export class UserService {
       .findById(id)
       .populate({
         path: 'role.role',
-        populate: { path: 'roleaccess' },
+        populate: { path: 'roleAccess documentAccess' },
       })
       .exec();
   }

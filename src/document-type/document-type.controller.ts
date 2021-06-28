@@ -8,7 +8,6 @@ import {
   Controller,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { constData } from './constData/typeData';
 import { DocumentTypeService } from './document-type.service';
 import { CreateDocumentTypeDto } from './dto/document-type.dto';
 
@@ -35,13 +34,13 @@ export class DocumentTypeController {
     return this.documentTypeService.delete(id);
   }
 
+  @Get(':id')
+  async getOne(@Param('id') id: string) {
+    return this.documentTypeService.getOne(id);
+  }
+
   @Get()
   async getAll() {
     return this.documentTypeService.getAll();
-  }
-
-  @Get('/type')
-  async getType() {
-    return constData;
   }
 }

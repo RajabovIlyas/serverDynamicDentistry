@@ -44,6 +44,10 @@ export class DocumentDataService {
     return this.documentDataModel.findByIdAndDelete(id);
   }
 
+  async getByType({ idType, idUser }): Promise<IDocumentData | {}> {
+    return this.documentDataModel.find({ user: idUser, documentType: idType });
+  }
+
   async getAll(): Promise<IDocumentData | {}> {
     return this.documentDataModel.find().populate({ path: 'user' }).exec();
   }

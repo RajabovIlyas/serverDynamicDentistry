@@ -40,7 +40,7 @@ export class DirectoryController {
     return this.directoryService.getAll();
   }
 
-  @Get('/type')
+  @Get('type')
   async getType() {
     return constData;
   }

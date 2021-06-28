@@ -3,11 +3,22 @@ import { Schema } from 'mongoose';
 
 export const RoleSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  roleaccess: {
+  roleAccess: {
     type: [
       {
         type: Schema.Types.ObjectId,
         ref: 'RoleAccess',
+        min: 1,
+        required: true,
+      },
+    ],
+    required: true,
+  },
+  documentAccess: {
+    type: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'DocumentType',
         min: 1,
         required: true,
       },
