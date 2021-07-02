@@ -1,4 +1,6 @@
 import * as mongoose from 'mongoose';
+import { documentDataStatusEnum } from '../enums/document-type.enum';
+import { documentTypeEnum } from '../../document-type/enums/document-type.enum';
 
 export const DocumentDataSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -20,6 +22,7 @@ export const DocumentDataSchema = new mongoose.Schema({
           required: true,
         },
         value: { type: String, required: true },
+        type: { type: String, required: true },
       },
     ],
     required: true,
@@ -38,10 +41,17 @@ export const DocumentDataSchema = new mongoose.Schema({
             {
               value: { type: String, required: true },
               name: { type: String, required: true },
+              type: { type: String, required: true },
             },
           ],
         },
       },
     ],
+  },
+  status: {
+    type: String,
+    required: true,
+    enum: Object.values(documentDataStatusEnum),
+    default: documentDataStatusEnum.CREATED,
   },
 });

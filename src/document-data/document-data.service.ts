@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateDocumentDataDto } from './dto/document-data.dto';
+import {
+  CreateDocumentDataDto,
+  GetDocumentDataForUserDto,
+} from './dto/document-data.dto';
 import { IDocumentData } from './interfaces/document-data.interface';
 
 @Injectable()
@@ -36,7 +39,7 @@ export class DocumentDataService {
   async change(
     id: string,
     createDocumentDataDto: CreateDocumentDataDto,
-  ): Promise<IDocumentData> {
+  ): Promise<IDocumentData | {}> {
     return this.documentDataModel.findByIdAndUpdate(id, createDocumentDataDto);
   }
 
@@ -46,6 +49,20 @@ export class DocumentDataService {
 
   async getByType({ idType, idUser }): Promise<IDocumentData | {}> {
     return this.documentDataModel.find({ user: idUser, documentType: idType });
+  }
+
+  async getByUserForBusinessProcess({
+    idUser,
+  }): Promise<GetDocumentDataForUserDto | {}> {
+    return this.documentDataModel
+      .find({ user: idUser })
+      .populate({ path: 'user' })
+      .exec()
+      .then((result) => {
+        return result.map((value) => {
+          return new GetDocumentDataForUserDto(value);
+        });
+      });
   }
 
   async getAll(): Promise<IDocumentData | {}> {

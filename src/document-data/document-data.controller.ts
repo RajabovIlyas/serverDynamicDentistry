@@ -44,6 +44,14 @@ export class DocumentDataController {
     });
   }
 
+  @UseGuards(AuthGuard('jwt'))
+  @Get('business-process')
+  async getForBusinessProcess(@Request() req) {
+    return this.documentDataService.getByUserForBusinessProcess({
+      idUser: req.userId,
+    });
+  }
+
   @Get()
   async getAll() {
     return this.documentDataService.getAll();
