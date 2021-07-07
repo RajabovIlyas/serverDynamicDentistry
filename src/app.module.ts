@@ -11,12 +11,16 @@ import { RoleAccessModule } from './role-access/role-access.module';
 import { DocumentTypeModule } from './document-type/document-type.module';
 import { DirectoryModule } from './directory/directory.module';
 import { DocumentDataModule } from './document-data/document-data.module';
+import { ExecutionProcessModule } from './execution-process/execution-process.module';
+import { MorganInterceptor, MorganModule } from 'nest-morgan';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
     UserModule,
     AuthModule,
     configModule,
+    MorganModule,
     MongooseModule.forRoot(process.env.MONGO_URL_V2, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -27,6 +31,13 @@ import { DocumentDataModule } from './document-data/document-data.module';
     DocumentTypeModule,
     DirectoryModule,
     DocumentDataModule,
+    ExecutionProcessModule,
   ],
+  // providers: [
+  //   {
+  //     provide: APP_INTERCEPTOR,
+  //     useClass: MorganInterceptor('combined'),
+  //   },
+  // ],
 })
 export class AppModule {}

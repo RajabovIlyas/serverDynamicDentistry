@@ -5,7 +5,9 @@ import {
   Get,
   Param,
   Post,
-  Put, Request, UseGuards,
+  Put,
+  Request,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { DocumentDataService } from './document-data.service';
